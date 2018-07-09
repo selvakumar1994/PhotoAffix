@@ -1,4 +1,4 @@
-package com.afollestad.photo.views;
+package com.cogzidel.photo.views;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -6,8 +6,6 @@ import android.graphics.Paint;
 import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 import android.view.View;
-
-import com.afollestad.photo.R;
 
 /** @author Aidan Follestad (afollestad) */
 public class CircleView extends View {
@@ -33,8 +31,8 @@ public class CircleView extends View {
 
   private void init() {
     setWillNotDraw(false);
-    int mAccentColor = ContextCompat.getColor(getContext(), R.color.colorAccent);
-    circleRadius = (int) getResources().getDimension(R.dimen.circle_border_radius);
+    int mAccentColor = ContextCompat.getColor(getContext(), com.cogzidel.photo.R.color.colorAccent);
+    circleRadius = (int) getResources().getDimension(com.cogzidel.photo.R.dimen.circle_border_radius);
 
     fillPaint = new Paint();
     fillPaint.setAntiAlias(true);

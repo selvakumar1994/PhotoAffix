@@ -9,11 +9,11 @@ android {
         abortOnError false
     }
     defaultConfig {
-        applicationId "com.afollestad.photo"
+        applicationId "com.cogzidel.photo"
         minSdkVersion 21
         targetSdkVersion 25
-        versionCode 30
-        versionName "0.6.2 BETA"
+        versionCode 1
+        versionName "1.0.0"
     }
     buildTypes {
         release {

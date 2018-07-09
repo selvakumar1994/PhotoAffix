@@ -1,41 +1,40 @@
-package com.afollestad.photo.views;
+package com.cogzidel.photo.views;
 
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.widget.AppCompatImageView;
 import android.util.AttributeSet;
-import android.widget.FrameLayout;
-
-import com.afollestad.photo.R;
 
 /** @author Aidan Follestad (afollestad) */
-public class SquareFrameLayout extends FrameLayout {
+public class SquareImageView extends AppCompatImageView {
 
   private Paint edgePaint;
   private int borderRadius;
 
-  public SquareFrameLayout(Context context) {
+  public SquareImageView(Context context) {
     super(context);
     init();
   }
 
-  public SquareFrameLayout(Context context, AttributeSet attrs) {
+  public SquareImageView(Context context, AttributeSet attrs) {
     super(context, attrs);
     init();
   }
 
-  public SquareFrameLayout(Context context, AttributeSet attrs, int defStyleAttr) {
+  public SquareImageView(Context context, AttributeSet attrs, int defStyleAttr) {
     super(context, attrs, defStyleAttr);
     init();
   }
 
   private void init() {
-    borderRadius = (int) getResources().getDimension(R.dimen.default_square_border_radius);
+    int mAccentColor = ContextCompat.getColor(getContext(), com.cogzidel.photo.R.color.colorAccent);
+    borderRadius = (int) getResources().getDimension(com.cogzidel.photo.R.dimen.circle_border_radius);
     edgePaint = new Paint();
     edgePaint.setAntiAlias(true);
     edgePaint.setStyle(Paint.Style.STROKE);
-    edgePaint.setColor(ContextCompat.getColor(getContext(), R.color.browseButtonBorder));
+    edgePaint.setColor(mAccentColor);
     edgePaint.setStrokeWidth(borderRadius);
   }
 
@@ -48,10 +47,12 @@ public class SquareFrameLayout extends FrameLayout {
   @Override
   protected void onDraw(Canvas canvas) {
     super.onDraw(canvas);
-    int left = borderRadius;
-    int top = borderRadius;
-    int bottom = getMeasuredHeight() - borderRadius;
-    int right = getMeasuredWidth() - borderRadius;
-    canvas.drawRect(left, top, right, bottom, edgePaint);
+    if (isActivated()) {
+      int left = borderRadius;
+      int top = borderRadius;
+      int bottom = getMeasuredHeight() - borderRadius;
+      int right = getMeasuredWidth() - borderRadius;
+      canvas.drawRect(left, top, right, bottom, edgePaint);
+    }
   }
 }

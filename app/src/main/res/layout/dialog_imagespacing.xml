@@ -87,13 +87,13 @@
     android:orientation="horizontal"
     android:weightSum="2">
 
-    <com.afollestad.photo.views.LineView
+    <com.cogzidel.photo.views.LineView
       android:id="@+id/verticalLine"
       android:layout_width="0dp"
       android:layout_height="match_parent"
       android:layout_weight="1"/>
 
-    <com.afollestad.photo.views.LineView
+    <com.cogzidel.photo.views.LineView
       android:id="@+id/horizontalLine"
       android:layout_width="0dp"
       android:layout_height="match_parent"

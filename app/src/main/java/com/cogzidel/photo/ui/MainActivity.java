@@ -1,4 +1,4 @@
-package com.afollestad.photo.ui;
+package com.cogzidel.photo.ui;
 
 import android.Manifest;
 import android.animation.ValueAnimator;
@@ -40,17 +40,16 @@ import com.afollestad.dragselectrecyclerview.DragSelectRecyclerViewAdapter;
 import com.afollestad.inquiry.Inquiry;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.afollestad.materialdialogs.color.ColorChooserDialog;
-import com.afollestad.photo.R;
-import com.afollestad.photo.adapters.PhotoGridAdapter;
-import com.afollestad.photo.animation.HeightEvaluator;
-import com.afollestad.photo.animation.ViewHideAnimationListener;
-import com.afollestad.photo.data.Photo;
-import com.afollestad.photo.dialogs.AboutDialog;
-import com.afollestad.photo.dialogs.ImageSizingDialog;
-import com.afollestad.photo.dialogs.ImageSpacingDialog;
-import com.afollestad.photo.utils.Prefs;
-import com.afollestad.photo.utils.Util;
-import com.afollestad.photo.views.ColorCircleView;
+import com.cogzidel.photo.adapters.PhotoGridAdapter;
+import com.cogzidel.photo.animation.HeightEvaluator;
+import com.cogzidel.photo.animation.ViewHideAnimationListener;
+import com.cogzidel.photo.data.Photo;
+import com.cogzidel.photo.dialogs.AboutDialog;
+import com.cogzidel.photo.dialogs.ImageSizingDialog;
+import com.cogzidel.photo.dialogs.ImageSpacingDialog;
+import com.cogzidel.photo.utils.Prefs;
+import com.cogzidel.photo.utils.Util;
+import com.cogzidel.photo.views.ColorCircleView;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -62,57 +61,57 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
 
-import static com.afollestad.photo.utils.Util.log;
+import static com.cogzidel.photo.utils.Util.log;
 
 /**
  * @author Aidan Follestad (afollestad)
  */
 public class MainActivity extends AppCompatActivity
     implements ColorChooserDialog.ColorCallback,
-    ImageSpacingDialog.SpacingCallback,
-    ImageSizingDialog.SizingCallback,
+        ImageSpacingDialog.SpacingCallback,
+        ImageSizingDialog.SizingCallback,
     DragSelectRecyclerViewAdapter.SelectionListener {
 
   private static final int PERMISSION_RC = 69;
   private static final int BROWSE_RC = 21;
 
-  @BindView(R.id.list)
+  @BindView(com.cogzidel.photo.R.id.list)
   public DragSelectRecyclerView list;
 
-  @BindView(R.id.appbar_toolbar)
+  @BindView(com.cogzidel.photo.R.id.appbar_toolbar)
   Toolbar toolbar;
 
-  @BindView(R.id.affixButton)
+  @BindView(com.cogzidel.photo.R.id.affixButton)
   Button affixButton;
 
-  @BindView(R.id.settingsFrame)
+  @BindView(com.cogzidel.photo.R.id.settingsFrame)
   ViewGroup settingsFrame;
 
-  @BindView(R.id.empty)
+  @BindView(com.cogzidel.photo.R.id.empty)
   TextView empty;
 
-  @BindView(R.id.stackHorizontallyLabel)
+  @BindView(com.cogzidel.photo.R.id.stackHorizontallyLabel)
   TextView stackHorizontallyLabel;
 
-  @BindView(R.id.stackHorizontallySwitch)
+  @BindView(com.cogzidel.photo.R.id.stackHorizontallySwitch)
   CheckBox stackHorizontallyCheck;
 
-  @BindView(R.id.bgFillColorCircle)
+  @BindView(com.cogzidel.photo.R.id.bgFillColorCircle)
   ColorCircleView bgFillColorCircle;
 
-  @BindView(R.id.bgFillColorLabel)
+  @BindView(com.cogzidel.photo.R.id.bgFillColorLabel)
   TextView bgFillColorLabel;
 
-  @BindView(R.id.imagePaddingLabel)
+  @BindView(com.cogzidel.photo.R.id.imagePaddingLabel)
   TextView imagePaddingLabel;
 
-  @BindView(R.id.removeBgButton)
+  @BindView(com.cogzidel.photo.R.id.removeBgButton)
   Button removeBgFillBtn;
 
-  @BindView(R.id.scalePriorityLabel)
+  @BindView(com.cogzidel.photo.R.id.scalePriorityLabel)
   TextView scalePriorityLabel;
 
-  @BindView(R.id.scalePrioritySwitch)
+  @BindView(com.cogzidel.photo.R.id.scalePrioritySwitch)
   CheckBox scalePrioritySwitch;
 
   private PhotoGridAdapter adapter;
@@ -137,18 +136,18 @@ public class MainActivity extends AppCompatActivity
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_main);
+    setContentView(com.cogzidel.photo.R.layout.activity_main);
 
     unbinder = ButterKnife.bind(this);
     Inquiry.newInstance(this, null).build();
 
-    toolbar.inflateMenu(R.menu.menu_main);
+    toolbar.inflateMenu(com.cogzidel.photo.R.menu.menu_main);
     toolbar.setOnMenuItemClickListener(
         item -> {
-          if (item.getItemId() == R.id.clear) {
+          if (item.getItemId() == com.cogzidel.photo.R.id.clear) {
             clearSelection();
             return true;
-          } else if (item.getItemId() == R.id.about) {
+          } else if (item.getItemId() == com.cogzidel.photo.R.id.about) {
             AboutDialog.show(MainActivity.this);
             return true;
           }
@@ -156,7 +155,7 @@ public class MainActivity extends AppCompatActivity
         });
 
     list.setLayoutManager(
-        new GridLayoutManager(this, getResources().getInteger(R.integer.grid_width)));
+        new GridLayoutManager(this, getResources().getInteger(com.cogzidel.photo.R.integer.grid_width)));
 
     adapter = new PhotoGridAdapter(this);
     adapter.restoreInstanceState(savedInstanceState);
@@ -170,23 +169,23 @@ public class MainActivity extends AppCompatActivity
     final boolean stackHorizontally = Prefs.stackHorizontally(this);
     stackHorizontallyCheck.setChecked(stackHorizontally);
     stackHorizontallyLabel.setText(
-        stackHorizontally ? R.string.stack_horizontally : R.string.stack_vertically);
+        stackHorizontally ? com.cogzidel.photo.R.string.stack_horizontally : com.cogzidel.photo.R.string.stack_vertically);
 
     final boolean scalePriority = Prefs.scalePriority(this);
     scalePrioritySwitch.setChecked(scalePriority);
     scalePriorityLabel.setText(
-        scalePriority ? R.string.scale_priority_on : R.string.scale_priority_off);
+        scalePriority ? com.cogzidel.photo.R.string.scale_priority_on : com.cogzidel.photo.R.string.scale_priority_off);
 
     final int bgFillColor = Prefs.bgFillColor(this);
     bgFillColorCircle.setColor(bgFillColor);
     final int[] padding = Prefs.imageSpacing(this);
-    imagePaddingLabel.setText(getString(R.string.image_spacing_x, padding[0], padding[1]));
+    imagePaddingLabel.setText(getString(com.cogzidel.photo.R.string.image_spacing_x, padding[0], padding[1]));
 
     if (bgFillColor != Color.TRANSPARENT) {
       removeBgFillBtn.setVisibility(View.VISIBLE);
-      bgFillColorLabel.setText(R.string.background_fill_color);
+      bgFillColorLabel.setText(com.cogzidel.photo.R.string.background_fill_color);
     } else {
-      bgFillColorLabel.setText(R.string.background_fill_color_transparent);
+      bgFillColorLabel.setText(com.cogzidel.photo.R.string.background_fill_color_transparent);
     }
 
     processIntent(getIntent());
@@ -206,7 +205,7 @@ public class MainActivity extends AppCompatActivity
         for (int i = 0; i < uris.size(); i++) selectedPhotos[i] = new Photo(uris.get(i));
         beginProcessing();
       } else {
-        Toast.makeText(this, R.string.need_two_or_more, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, com.cogzidel.photo.R.string.need_two_or_more, Toast.LENGTH_SHORT).show();
       }
     }
   }
@@ -284,33 +283,33 @@ public class MainActivity extends AppCompatActivity
     }
     selectedPhotos = null;
     adapter.clearSelected();
-    toolbar.getMenu().findItem(R.id.clear).setVisible(false);
+    toolbar.getMenu().findItem(com.cogzidel.photo.R.id.clear).setVisible(false);
   }
 
-  @OnClick(R.id.removeBgButton)
+  @OnClick(com.cogzidel.photo.R.id.removeBgButton)
   public void onClickRemoveBgFill() {
     removeBgFillBtn.setVisibility(View.GONE);
     //noinspection ConstantConditions
     onColorSelection(null, Color.TRANSPARENT);
   }
 
-  @OnClick(R.id.expandButton)
+  @OnClick(com.cogzidel.photo.R.id.expandButton)
   public void onClickExpandButton(ImageView button) {
     if (originalSettingsFrameHeight == -1) {
       final int settingControlHeight =
-          (int) getResources().getDimension(R.dimen.settings_control_height);
+          (int) getResources().getDimension(com.cogzidel.photo.R.dimen.settings_control_height);
       originalSettingsFrameHeight = settingControlHeight * settingsFrame.getChildCount();
     }
     if (settingsFrameAnimator != null) settingsFrameAnimator.cancel();
     if (settingsFrame.getVisibility() == View.GONE) {
       settingsFrame.setVisibility(View.VISIBLE);
-      button.setImageResource(R.drawable.ic_collapse);
+      button.setImageResource(com.cogzidel.photo.R.drawable.ic_collapse);
       settingsFrameAnimator =
           ValueAnimator.ofObject(
               new HeightEvaluator(settingsFrame), 0, originalSettingsFrameHeight);
 
     } else {
-      button.setImageResource(R.drawable.ic_expand);
+      button.setImageResource(com.cogzidel.photo.R.drawable.ic_expand);
       settingsFrameAnimator =
           ValueAnimator.ofObject(
               new HeightEvaluator(settingsFrame), originalSettingsFrameHeight, 0);
@@ -331,45 +330,45 @@ public class MainActivity extends AppCompatActivity
     affixButton.setEnabled(true);
   }
 
-  @OnClick(R.id.affixButton)
+  @OnClick(com.cogzidel.photo.R.id.affixButton)
   public void onClickAffixButton(View v) {
     selectedPhotos = adapter.getSelectedPhotos();
     beginProcessing();
   }
 
   @OnClick({
-      R.id.settingStackHorizontally,
-      R.id.settingBgFillColor,
-      R.id.settingImagePadding,
-      R.id.settingScalePriority
+      com.cogzidel.photo.R.id.settingStackHorizontally,
+      com.cogzidel.photo.R.id.settingBgFillColor,
+      com.cogzidel.photo.R.id.settingImagePadding,
+      com.cogzidel.photo.R.id.settingScalePriority
   })
   public void onClickSetting(View view) {
     switch (view.getId()) {
-      case R.id.settingStackHorizontally:
+      case com.cogzidel.photo.R.id.settingStackHorizontally:
         stackHorizontallyCheck.setChecked(!stackHorizontallyCheck.isChecked());
         stackHorizontallyLabel.setText(
             stackHorizontallyCheck.isChecked()
-                ? R.string.stack_horizontally
-                : R.string.stack_vertically);
+                ? com.cogzidel.photo.R.string.stack_horizontally
+                : com.cogzidel.photo.R.string.stack_vertically);
         Prefs.stackHorizontally(this, stackHorizontallyCheck.isChecked());
         break;
-      case R.id.settingBgFillColor:
-        new ColorChooserDialog.Builder(this, R.string.background_fill_color_title)
-            .backButton(R.string.back)
-            .doneButton(R.string.done)
+      case com.cogzidel.photo.R.id.settingBgFillColor:
+        new ColorChooserDialog.Builder(this, com.cogzidel.photo.R.string.background_fill_color_title)
+            .backButton(com.cogzidel.photo.R.string.back)
+            .doneButton(com.cogzidel.photo.R.string.done)
             .allowUserColorInputAlpha(false)
             .preselect(Prefs.bgFillColor(this))
             .show();
         break;
-      case R.id.settingImagePadding:
+      case com.cogzidel.photo.R.id.settingImagePadding:
         new ImageSpacingDialog().show(getFragmentManager(), "[IMAGE_PADDING_DIALOG]");
         break;
-      case R.id.settingScalePriority:
+      case com.cogzidel.photo.R.id.settingScalePriority:
         scalePrioritySwitch.setChecked(!scalePrioritySwitch.isChecked());
         scalePriorityLabel.setText(
             scalePrioritySwitch.isChecked()
-                ? R.string.scale_priority_on
-                : R.string.scale_priority_off);
+                ? com.cogzidel.photo.R.string.scale_priority_on
+                : com.cogzidel.photo.R.string.scale_priority_off);
         Prefs.scalePriority(this, scalePrioritySwitch.isChecked());
         break;
     }
@@ -380,9 +379,9 @@ public class MainActivity extends AppCompatActivity
       @NonNull ColorChooserDialog colorChooserDialog, @ColorInt int selectedColor) {
     if (selectedColor != Color.TRANSPARENT) {
       removeBgFillBtn.setVisibility(View.VISIBLE);
-      bgFillColorLabel.setText(R.string.background_fill_color);
+      bgFillColorLabel.setText(com.cogzidel.photo.R.string.background_fill_color);
     } else {
-      bgFillColorLabel.setText(R.string.background_fill_color_transparent);
+      bgFillColorLabel.setText(com.cogzidel.photo.R.string.background_fill_color_transparent);
     }
     Prefs.bgFillColor(this, selectedColor);
     bgFillColorCircle.setColor(selectedColor);
@@ -395,7 +394,7 @@ public class MainActivity extends AppCompatActivity
   @Override
   public void onSpacingChanged(int horizontal, int vertical) {
     Prefs.imageSpacing(this, horizontal, vertical);
-    imagePaddingLabel.setText(getString(R.string.image_spacing_x, horizontal, vertical));
+    imagePaddingLabel.setText(getString(com.cogzidel.photo.R.string.image_spacing_x, horizontal, vertical));
   }
 
   @Size(2)
@@ -707,7 +706,7 @@ public class MainActivity extends AppCompatActivity
 
     final MaterialDialog progress =
         new MaterialDialog.Builder(this)
-            .content(R.string.affixing_your_photos)
+            .content(com.cogzidel.photo.R.string.affixing_your_photos)
             .progress(true, -1)
             .cancelable(false)
             .show();
@@ -929,11 +928,11 @@ public class MainActivity extends AppCompatActivity
 
   @Override
   public void onDragSelectionChanged(int count) {
-    affixButton.setText(getString(R.string.affix_x, count));
+    affixButton.setText(getString(com.cogzidel.photo.R.string.affix_x, count));
     affixButton.setEnabled(count > 0);
     toolbar
         .getMenu()
-        .findItem(R.id.clear)
+        .findItem(com.cogzidel.photo.R.id.clear)
         .setVisible(adapter != null && adapter.getSelectedCount() > 0);
   }
 
@@ -950,7 +949,7 @@ public class MainActivity extends AppCompatActivity
     if (requestCode == BROWSE_RC && resultCode == RESULT_OK) {
       final MaterialDialog progress =
           new MaterialDialog.Builder(this)
-              .content(R.string.retrieving_photo)
+              .content(com.cogzidel.photo.R.string.retrieving_photo)
               .progress(true, -1)
               .cancelable(false)
               .show();

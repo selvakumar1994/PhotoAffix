@@ -1,4 +1,4 @@
-package com.afollestad.photo.views;
+package com.cogzidel.photo.views;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -8,7 +8,7 @@ import android.support.annotation.ColorInt;
 import android.util.AttributeSet;
 import android.view.View;
 
-import com.afollestad.photo.R;
+import com.cogzidel.photo.R;
 
 /** @author Aidan Follestad (afollestad) */
 public class ColorCircleView extends View {

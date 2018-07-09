@@ -1,4 +1,4 @@
-package com.afollestad.photo.utils;
+package com.cogzidel.photo.utils;
 
 import android.annotation.SuppressLint;
 import android.content.Context;

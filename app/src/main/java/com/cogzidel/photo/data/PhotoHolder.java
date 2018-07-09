@@ -1,4 +1,4 @@
-package com.afollestad.photo.data;
+package com.cogzidel.photo.data;
 
 import java.io.Serializable;
 

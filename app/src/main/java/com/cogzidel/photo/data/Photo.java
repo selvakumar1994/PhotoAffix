@@ -1,4 +1,4 @@
-package com.afollestad.photo.data;
+package com.cogzidel.photo.data;
 
 import android.net.Uri;
 import android.support.annotation.NonNull;

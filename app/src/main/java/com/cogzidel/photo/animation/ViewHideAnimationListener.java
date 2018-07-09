@@ -1,4 +1,4 @@
-package com.afollestad.photo.animation;
+package com.cogzidel.photo.animation;
 
 import android.animation.Animator;
 import android.view.View;

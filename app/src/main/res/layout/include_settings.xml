@@ -48,7 +48,7 @@
     android:paddingStart="@dimen/content_inset"
     tools:ignore="RtlSymmetry">
 
-    <com.afollestad.photo.views.ColorCircleView
+    <com.cogzidel.photo.views.ColorCircleView
       android:id="@+id/bgFillColorCircle"
       android:layout_width="@dimen/color_circle_view"
       android:layout_height="@dimen/color_circle_view"

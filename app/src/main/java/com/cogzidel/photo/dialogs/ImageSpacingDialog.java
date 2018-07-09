@@ -1,4 +1,4 @@
-package com.afollestad.photo.dialogs;
+package com.cogzidel.photo.dialogs;
 
 import android.app.Activity;
 import android.app.Dialog;
@@ -12,10 +12,10 @@ import android.widget.TextView;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.afollestad.materialdialogs.internal.MDTintHelper;
-import com.afollestad.photo.R;
-import com.afollestad.photo.ui.MainActivity;
-import com.afollestad.photo.utils.Prefs;
-import com.afollestad.photo.views.LineView;
+import com.cogzidel.photo.R;
+import com.cogzidel.photo.ui.MainActivity;
+import com.cogzidel.photo.utils.Prefs;
+import com.cogzidel.photo.views.LineView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

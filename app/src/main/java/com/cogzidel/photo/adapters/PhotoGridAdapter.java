@@ -1,4 +1,4 @@
-package com.afollestad.photo.adapters;
+package com.cogzidel.photo.adapters;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -9,10 +9,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.afollestad.dragselectrecyclerview.DragSelectRecyclerViewAdapter;
-import com.afollestad.photo.R;
-import com.afollestad.photo.data.Photo;
-import com.afollestad.photo.data.PhotoHolder;
-import com.afollestad.photo.ui.MainActivity;
+import com.cogzidel.photo.R;
+import com.cogzidel.photo.data.Photo;
+import com.cogzidel.photo.data.PhotoHolder;
+import com.cogzidel.photo.ui.MainActivity;
 import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;

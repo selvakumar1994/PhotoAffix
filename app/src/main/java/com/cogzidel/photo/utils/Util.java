@@ -1,4 +1,4 @@
-package com.afollestad.photo.utils;
+package com.cogzidel.photo.utils;
 
 import android.app.Activity;
 import android.content.Context;
@@ -11,7 +11,6 @@ import android.view.Surface;
 import android.view.WindowManager;
 
 import com.afollestad.materialdialogs.MaterialDialog;
-import com.afollestad.photo.R;
 
 import java.io.Closeable;
 import java.io.File;
@@ -33,7 +32,7 @@ public class Util {
     final String timeStamp =
         new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(new Date());
     File parent =
-        new File(Environment.getExternalStorageDirectory(), mContext.getString(R.string.app_name));
+        new File(Environment.getExternalStorageDirectory(), mContext.getString(com.cogzidel.photo.R.string.app_name));
     parent.mkdirs();
     return new File(parent, "AFFIX_" + timeStamp + extension);
   }
@@ -51,7 +50,7 @@ public class Util {
       return;
     }
     new MaterialDialog.Builder(context)
-        .title(R.string.error)
+        .title(com.cogzidel.photo.R.string.error)
         .content(e.getMessage())
         .positiveText(android.R.string.ok)
         .show();

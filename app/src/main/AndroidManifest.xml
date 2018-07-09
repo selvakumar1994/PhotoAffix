@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.afollestad.photo">
+          package="com.cogzidel.photo">
 
   <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
   <uses-permission android:name="android.permission.INTERNET"/>
@@ -12,7 +12,7 @@
     android:supportsRtl="true"
     android:theme="@style/AppTheme">
 
-    <activity android:name=".ui.MainActivity">
+    <activity android:name="com.cogzidel.photo.ui.MainActivity">
       <intent-filter>
         <action android:name="android.intent.action.MAIN"/>
 
@@ -26,7 +26,7 @@
     </activity>
 
     <activity
-      android:name=".ui.ViewerActivity"
+      android:name="com.cogzidel.photo.ui.ViewerActivity"
       android:theme="@style/AppTheme.Black"/>
 
     <provider

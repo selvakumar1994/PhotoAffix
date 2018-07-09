@@ -13,7 +13,7 @@
     android:background="@android:color/black"
     tools:ignore="UselessParent">
 
-    <com.afollestad.photo.views.SquareImageView
+    <com.cogzidel.photo.views.SquareImageView
       android:id="@+id/image"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
@@ -26,7 +26,7 @@
       android:layout_marginEnd="@dimen/grid_circle_margin"
       android:layout_marginTop="@dimen/grid_circle_margin">
 
-      <com.afollestad.photo.views.CircleView
+      <com.cogzidel.photo.views.CircleView
         android:id="@+id/circle"
         android:layout_width="32dp"
         android:layout_height="32dp"/>

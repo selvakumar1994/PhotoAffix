@@ -1,4 +1,4 @@
-package com.afollestad.photo.dialogs;
+package com.cogzidel.photo.dialogs;
 
 import android.app.Activity;
 import android.app.Dialog;
@@ -14,8 +14,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.afollestad.materialdialogs.MaterialDialog;
-import com.afollestad.photo.R;
-import com.afollestad.photo.ui.MainActivity;
+import com.cogzidel.photo.R;
+import com.cogzidel.photo.ui.MainActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

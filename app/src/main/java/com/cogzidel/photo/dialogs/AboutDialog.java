@@ -1,4 +1,4 @@
-package com.afollestad.photo.dialogs;
+package com.cogzidel.photo.dialogs;
 
 import android.app.Dialog;
 import android.os.Bundle;
@@ -8,7 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
 
 import com.afollestad.materialdialogs.MaterialDialog;
-import com.afollestad.photo.R;
+import com.cogzidel.photo.R;
 
 /** @author Aidan Follestad (afollestad) */
 public class AboutDialog extends DialogFragment {

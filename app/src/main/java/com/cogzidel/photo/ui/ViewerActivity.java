@@ -1,4 +1,4 @@
-package com.afollestad.photo.ui;
+package com.cogzidel.photo.ui;
 
 import android.content.Intent;
 import android.media.MediaScannerConnection;
@@ -15,9 +15,8 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 
 import com.afollestad.materialdialogs.MaterialDialog;
-import com.afollestad.photo.BuildConfig;
-import com.afollestad.photo.R;
-import com.afollestad.photo.utils.Util;
+import com.cogzidel.photo.BuildConfig;
+import com.cogzidel.photo.utils.Util;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.drawable.GlideDrawable;
 import com.bumptech.glide.request.animation.GlideAnimation;
@@ -36,13 +35,13 @@ import uk.co.senab.photoview.PhotoViewAttacher;
 public class ViewerActivity extends AppCompatActivity
     implements Toolbar.OnMenuItemClickListener, PhotoViewAttacher.OnPhotoTapListener {
 
-  @BindView(R.id.appbar_toolbar)
+  @BindView(com.cogzidel.photo.R.id.appbar_toolbar)
   Toolbar toolbar;
 
-  @BindView(R.id.image)
+  @BindView(com.cogzidel.photo.R.id.image)
   ImageView image;
 
-  @BindView(R.id.progress)
+  @BindView(com.cogzidel.photo.R.id.progress)
   ProgressBar progress;
 
   private Unbinder unbinder;
@@ -62,12 +61,12 @@ public class ViewerActivity extends AppCompatActivity
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_viewer);
+    setContentView(com.cogzidel.photo.R.layout.activity_viewer);
     unbinder = ButterKnife.bind(this);
 
-    toolbar.inflateMenu(R.menu.menu_viewer);
+    toolbar.inflateMenu(com.cogzidel.photo.R.menu.menu_viewer);
     toolbar.setOnMenuItemClickListener(this);
-    toolbar.setNavigationIcon(R.drawable.ic_close);
+    toolbar.setNavigationIcon(com.cogzidel.photo.R.drawable.ic_close);
     toolbar.setNavigationOnClickListener(v -> finish());
 
     attacher = new PhotoViewAttacher(image);
@@ -102,33 +101,33 @@ public class ViewerActivity extends AppCompatActivity
         new File(getIntent().getData().getPath()));
 
     switch (item.getItemId()) {
-      case R.id.share: {
+      case com.cogzidel.photo.R.id.share: {
         Intent target =
             new Intent(Intent.ACTION_SEND)
                 .putExtra(Intent.EXTRA_STREAM, uri)
                 .setDataAndType(uri, "image/*");
-        Intent chooser = Intent.createChooser(target, getString(R.string.share_using));
+        Intent chooser = Intent.createChooser(target, getString(com.cogzidel.photo.R.string.share_using));
         startActivity(chooser);
         break;
       }
-      case R.id.edit: {
+      case com.cogzidel.photo.R.id.edit: {
         Intent target =
             new Intent(Intent.ACTION_EDIT).setDataAndType(uri, "image/*");
-        Intent chooser = Intent.createChooser(target, getString(R.string.edit_with));
+        Intent chooser = Intent.createChooser(target, getString(com.cogzidel.photo.R.string.edit_with));
         startActivity(chooser);
         break;
       }
-      case R.id.openExternal: {
+      case com.cogzidel.photo.R.id.openExternal: {
         Intent target =
             new Intent(Intent.ACTION_VIEW).setDataAndType(uri, "image/*");
-        Intent chooser = Intent.createChooser(target, getString(R.string.open_with));
+        Intent chooser = Intent.createChooser(target, getString(com.cogzidel.photo.R.string.open_with));
         startActivity(chooser);
         break;
       }
-      case R.id.delete: {
+      case com.cogzidel.photo.R.id.delete: {
         new MaterialDialog.Builder(this)
-            .content(R.string.confirm_delete)
-            .positiveText(R.string.yes)
+            .content(com.cogzidel.photo.R.string.confirm_delete)
+            .positiveText(com.cogzidel.photo.R.string.yes)
             .negativeText(android.R.string.cancel)
             .onPositive(
                 (materialDialog, dialogAction) -> delete())
@@ -142,7 +141,7 @@ public class ViewerActivity extends AppCompatActivity
   private void delete() {
     final MaterialDialog progress =
         new MaterialDialog.Builder(this)
-            .content(R.string.deleting)
+            .content(com.cogzidel.photo.R.string.deleting)
             .cancelable(false)
             .progress(true, -1)
             .show();

@@ -1,4 +1,4 @@
-package com.afollestad.photo.views;
+package com.cogzidel.photo.views;
 
 import android.content.Context;
 import android.graphics.Canvas;

@@ -7,7 +7,7 @@
   android:foreground="?selectableItemBackground"
   android:padding="@dimen/grid_padding_small">
 
-  <com.afollestad.photo.views.SquareFrameLayout
+  <com.cogzidel.photo.views.SquareFrameLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/colorPrimaryTranslucent"
@@ -20,6 +20,6 @@
       android:src="@drawable/ic_browse_images"
       tools:ignore="ContentDescription"/>
 
-  </com.afollestad.photo.views.SquareFrameLayout>
+  </com.cogzidel.photo.views.SquareFrameLayout>
 
 </FrameLayout>
