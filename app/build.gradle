@@ -12,8 +12,7 @@ android {
         applicationId "com.cogzidel.photo"
         minSdkVersion 21
         targetSdkVersion 25
-        versionCode getCustomVersionCode()
-        # versioncode 15
+        versionCode getCustomVersionCode()      
         versionName "1.1.4"
     }
     buildTypes {
