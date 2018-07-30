@@ -12,7 +12,8 @@ android {
         applicationId "com.cogzidel.photo"
         minSdkVersion 21
         targetSdkVersion 25
-        versionCode 15
+        versionCode getCustomVersionCode()
+        # versioncode 15
         versionName "1.1.4"
     }
     buildTypes {
@@ -25,6 +26,11 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+}
+
+def getCustomVersionCode() {
+    def date = new Date()
+    return Integer.valueOf(System.env.BUILD_NUMBER ?: date.format('yyMMddHHmm'))
 }
 
 dependencies {
